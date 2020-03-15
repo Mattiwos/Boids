@@ -1,4 +1,5 @@
 package src;
+
 import src.*;
 
 import java.awt.Color;
@@ -9,16 +10,16 @@ import java.lang.Object;
 public class Bird extends GameObject {
    
 
-    public Bird(double x, double y, double r){
+    public Bird(double x, double y, double r, double velx, double vely){
         super(x,y,r);
-        setVelY(10);
-        setVelX(10);
+        setVelY(vely);
+        setVelX(velx);
 
     }
     public void render(Graphics g){
-        g.setColor(Color.white);
+        g.setColor(Color.black);
         g.fillRect((int)getX(),(int)getY(),10,10);
-        g.drawRect((int)getX(),(int)getY(),100,100);
+        
 
 
     }
@@ -27,7 +28,14 @@ public class Bird extends GameObject {
 
         setY(getY()+ getVelY());
         setX(getX()+getVelX());
+        if (getY() >= 390 || getY() <= 0){
+            setVelY(getVelY() *-1);
 
+        }
+        if (getX() >= 390 || getX() <= 0){
+            setVelX(getVelX() *-1);
+
+        }
 
     }
 
